@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Biryani Order</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+.checkout-container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .checkout-container {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="checkout-container">
+    <h2>Delivery & Payment</h2>
+    <form id="checkoutForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required />
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" rows="3" required></textarea>
+
+      <label for="payment">Payment Method:</label>
+      <select id="payment" required>
+        <option value="">--Select--</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+      <button type="submit">Confirm Order</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('checkoutForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const payment = document.getElementById('payment').value;
+
+      if (!name || !address || !payment) {
+        alert("Please fill all details.");
+        return;
+      }
+
+      // Save order details (optional)
+      localStorage.removeItem('biryaniCart');
+
+      alert(`🎉 Thank you ${name}! Your order has been placed via ${payment === 'upi' ? 'UPI' : 'Cash on Delivery'}.`);
+
+      window.location.href = "thankyou.html";
+    });
+  </script>
+  <script>
+  const checkoutForm = document.getElementById('checkoutForm');
+
+  checkoutForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Optional: Validate form fields
+    const name = document.getElementById('name').value.trim();
+    const address = document.getElementById('address').value.trim();
+
+    if (!name || !address) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // Clear the cart
+    localStorage.removeItem('biryaniCart');
+
+    // Redirect to thank you page
+    window.location.href = "thankyou.html";
+  });
+</script>
+
+</body>
+</html>

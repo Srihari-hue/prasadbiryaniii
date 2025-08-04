@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu - Biryani Order</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="menu-header">
+    <h1>Our Menu</h1>
+    <p>Choose your favorite biryani and add to cart</p>
+  </header>
+
+  <section class="menu-grid">
+    <!-- Biryani Item -->
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297467424.png " alt="Hyderabadi Biryani" />
+      <h3>Hyderabadi Biryani</h3>
+      <p>Fragrant basmati rice, juicy chicken & rich spices.</p>
+      <span>₹220</span>
+    <button onclick="addToCart('Hyderabadi Biryani', 220, 'assets/piclumen-1754297467424.png')">Add to Cart</button>
+
+    </div>
+
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297498610.png" alt="Egg Biryani" />
+      <h3>Egg Biryani</h3>
+      <p>Boiled eggs layered in aromatic masala and rice.</p>
+      <span>₹180</span>
+     <button onclick="addToCart('Egg Biryani', 180, 'assets/piclumen-1754297498610.png')">Add to Cart</button>
+
+    </div>
+
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297545212.png " alt="Veg Biryani" />
+      <h3>Veg Biryani</h3>
+      <p>Loaded with fresh vegetables, saffron and spices.</p>
+      <span>₹150</span>
+     <button onclick="addToCart('Veg Biryani', 150, 'assets/piclumen-1754297545212.png')">Add to Cart</button>
+
+    </div>
+
+    <div class="menu-item">
+      <img src=" assets/piclumen-1754297580536.png " alt="Mutton Biryani" />
+      <h3>Mutton Biryani</h3>
+      <p>Tender mutton chunks slow-cooked in spicy basmati rice.</p>
+      <span>₹270</span>
+      <button onclick="addToCart('Mutton Biryani', 270, 'assets/piclumen-1754297580536.png')">Add to Cart</button>
+
+    </div>
+
+  </section>
+ <section class="menu-grid">
+    <!-- Biryani Item -->
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297467424.png " alt="Hyderabadi Biryani" />
+      <h3>Hyderabadi Biryani</h3>
+      <p>Fragrant basmati rice, juicy chicken & rich spices.</p>
+      <span>₹220</span>
+     <button onclick="addToCart('Hyderabadi Biryani', 220, 'assets/piclumen-1754297467424.png')">Add to Cart</button>
+
+    </div>
+
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297498610.png" alt="Egg Biryani" />
+      <h3>Eggmasala Biryani</h3>
+      <p>Boiled eggs layered in aromatic masala and rice.</p>
+      <span>₹180</span>
+     <button onclick="addToCart('Eggmasala Biryani', 180, 'assets/piclumen-1754297498610.png')">Add to Cart</button>
+
+    </div>
+
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297545212.png " alt="Veg Biryani" />
+      <h3>Vegmasala Biryani</h3>
+      <p>Loaded with fresh vegetables, saffron and spices.</p>
+      <span>₹150</span>
+      <button onclick="addToCart('Vegmasala Biryani', 150, 'assets/piclumen-1754297545212.png ')">Add to Cart</button>
+
+    </div>
+
+    <div class="menu-item">
+      <img src="assets/piclumen-1754297703601.png " alt="Mutton Biryani" />
+      <h3>Muttondum Biryani</h3>
+      <p>Tender mutton chunks slow-cooked in spicy basmati rice.</p>
+      <span>₹270</span>
+     <button onclick="addToCart('Muttondum Biryani', 270, 'assets/piclumen-1754297703601.png')">Add to Cart</button>
+    </div>
+
+  </section>
+  <script>
+function addToCart(name, price, image) {
+  const cart = JSON.parse(localStorage.getItem('biryaniCart')) || [];
+
+  const existing = cart.find(item => item.name === name);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ name, price, image, quantity: 1 });
+  }
+
+  localStorage.setItem('biryaniCart', JSON.stringify(cart));
+  alert(`${name} added to cart!`);
+}
+</script>
+ <div style="text-align: center; margin: 30px 0;">
+  <a href="cart.html" class="cart-btn">🛒 Go to Cart</a>
+</div>
+
+<style>
+  .cart-btn {
+  display: inline-block;
+  background-color: #ff6600;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-btn:hover {
+  background-color: #e65c00;
+  transform: scale(1.05);
+}
+
+.cart-btn:active {
+  background-color: #cc5200;
+  transform: scale(0.97);
+}
+
+</style>
+</body>
+</html>
